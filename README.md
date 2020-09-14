@@ -10,7 +10,7 @@
 3. [Web Service](#id3)
 4. [Service Programs](#id4)
 5. [Web API Service](#id5)
-6. [Conclusiones](#id6)
+
 
 ## Objetivo de la práctica <a name="id1"></a>
 
@@ -90,4 +90,45 @@ Y por último retornamos la imagen que se ha creado en nuestro *Service_programs
 
 Este servicio consiste en tratar las peticiones de usuarios que no se conecten a nuestro servicio web sino que quieran usar el servicio de *Service program* directamente. De esta forma protegemos nuestro servicio y solo se lo ofrecemos a los usuarios que queramos.
 
-## Conclusiones <a name="id6"></a>
+Lo primero que se debe hacer es hacer una función que compruebe si existe un token y es válido.
+Esto lo hacemos de la siguiente manera:
+
+```python
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.args.get('token')
+
+        if not token:
+            return jsonify({'message': 'No hay token'}), 403
+
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+        except:
+            return jsonify({'message': 'token invalido'}), 403
+
+        return f(*args, **kwargs)
+
+    return decorated
+
+```
+
+Lo siguiente que debemos hacer es proteger el *login* de tal forma que si un usuario va a la ruta */login* deberá conectarse con un **usuario** y una **password** para poder acceder al servicio. Si la contraseña es correcta se le mostrará el token que puede utilizar para acceder a los métodos de la siguiente forma:
+
+*localhost:4000/apps?token=xxxxxxxxxxxxxx*
+
+En caso de que no se haya obtenido el token, el usuario no podrá acceder a los métodos.
+
+La contraseña en este caso esta definida en el propio código pero lo suyo es que este en una base de datos juntos con el nombre del usuario. En este caso la contraseña es *password*.
+
+
+Un ejemplo para el método */apps* que devuelve los ejecutables que existen solo habría que crear un método que llame al propio método del servicio y añadirle **@token_required**.
+
+```python
+@app.route('/apps')
+@token_required
+def apps():
+    r = requests.get('http://localhost:5000/apps')
+    data = r.text
+    return data
+```

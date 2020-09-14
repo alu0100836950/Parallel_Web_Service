@@ -34,17 +34,6 @@ def token_required(f):
 
     return decorated
 
-@app.route('/unprotected')
-def unprotected():
-    return 'puedes acceder'
-
-
-
-@app.route('/protected')
-@token_required
-def protected():
-    return 'este es el metodo protegido'
-
 
 @app.route('/login')
 def login():
@@ -91,7 +80,7 @@ def exec(name):
     img.save('static/temp/output.jpg')
     return send_file('static/temp/output.jpg')
 
-# app.secret_key = 'mysecret'
+
 
 if __name__ == '__main__':
     app.run('127.0.0.1', 4000, debug=True)
