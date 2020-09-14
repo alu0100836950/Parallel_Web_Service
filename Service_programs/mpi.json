@@ -1,4 +1,4 @@
 {
-    "name": "MPI Image",
-    "description": "Este programa trata imágenes en MPI"
+    "name": "MPI",
+    "description": "Este programa procesa imágenes usando MPI"
 }

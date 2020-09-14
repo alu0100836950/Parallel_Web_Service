@@ -1,4 +1,4 @@
 {
     "name": "OpenMP",
-    "desc": "Este programa pasa un filtro a una imagen"
+    "description": "Este programa usa OpenMP para procesar la imagen que elijas"
 }

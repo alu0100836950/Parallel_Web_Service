@@ -1,11 +1,12 @@
-console.log('hola')
+console.log('cargar imagen')
 
 
 $('#exec').on('click', () => {
+
     let data = {
         "input_image": "lena.jpg",
         "output_image": "test.jpg",
-        "num_cores": 4
+        "num_cores": parseInt($('#number-cores').val())
     }
 
     $.ajax({

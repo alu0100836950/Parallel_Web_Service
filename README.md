@@ -38,6 +38,10 @@ Este servicio se encargará de proporcionarnos una web en donde vamos a poder un
 
 Ahora podemos seleccionar el algoritmo paralelo que queremos utilizar para procesar nuestra imagen. Al seleccionar uno de ellos, accederemos a un formulario en onde podremos añadir la imagen que queremos procesar y cargarla en nuestro servicio *Service_programs* que se explicará posteriormente.
 
+Imaginemos que seleccionamos la opcion de *mpi*, esto nos llevaría a la siguiente página:
+
+![mpi select](img/mpi.jpeg)
+
 ## Service_programs <a name="id4"></a>
 
 

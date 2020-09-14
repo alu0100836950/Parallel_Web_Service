@@ -53,7 +53,8 @@ def upload():
 def form(name_file):
     r = requests.get('http://localhost:5000/apps/' + name_file)
     data = r.json()
-    return render_template('form.html', data = data)
+    ok = 'ok'
+    return render_template('form.html', data = data, ok = ok)
 
 
 @app.route('/login', methods= ['POST'])
