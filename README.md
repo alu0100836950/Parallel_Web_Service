@@ -41,7 +41,6 @@ Ahora podemos seleccionar el algoritmo paralelo que queremos utilizar para proce
 Imaginemos que seleccionamos la opcion de *mpi*, esto nos llevaría a la siguiente página:
 
 
-PONER NUEVA IMAGEN
 ![mpi select](img/mpi_.jpeg)
 
 En donde como es el caso de *mpi* podemos seleccionar el número de cores a utilizar. Este campo tiene como minimo el valor 1 y como maximo 8.
@@ -113,11 +112,13 @@ def token_required(f):
 
 ```
 
-Lo siguiente que debemos hacer es proteger el *login* de tal forma que si un usuario va a la ruta */login* deberá conectarse con un **usuario** y una **password** para poder acceder al servicio. Si la contraseña es correcta se le mostrará el token que puede utilizar para acceder a los métodos de la siguiente forma:
+Lo siguiente que debemos hacer es proteger el *login* de tal forma que si un usuario va a la ruta */login* deberá conectarse con un **usuario** y una **password** para poder acceder al servicio. Si la contraseña es correcta se le mostrará el **token** que puede utilizar para acceder a los métodos de la siguiente forma:
 
 *localhost:4000/apps?token=xxxxxxxxxxxxxx*
 
-En caso de que no se haya obtenido el token, el usuario no podrá acceder a los métodos.
+![use token](img/token.jpeg)
+
+En caso de que no se haya obtenido el token, el usuario no podrá acceder a los métodos. El token que se obtiene tiene una cadicidad, para este caso se le ha puesto una duración de treinta minutos.
 
 La contraseña en este caso esta definida en el propio código pero lo suyo es que este en una base de datos juntos con el nombre del usuario. En este caso la contraseña es *password*.
 
