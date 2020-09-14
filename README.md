@@ -116,9 +116,9 @@ Lo siguiente que debemos hacer es proteger el *login* de tal forma que si un usu
 
 *localhost:4000/apps?token=xxxxxxxxxxxxxx*
 
-![use token](img/token.jpeg)
 
-En caso de que no se haya obtenido el token, el usuario no podrá acceder a los métodos. El token que se obtiene tiene una cadicidad, para este caso se le ha puesto una duración de treinta minutos.
+
+En caso de que no se haya obtenido el token, el usuario no podrá acceder a los métodos. El token que se obtiene tiene una caducidad, para este caso se le ha puesto una duración de treinta minutos.
 
 La contraseña en este caso esta definida en el propio código pero lo suyo es que este en una base de datos juntos con el nombre del usuario. En este caso la contraseña es *password*.
 
@@ -133,3 +133,7 @@ def apps():
     data = r.text
     return data
 ```
+
+Y este sería el resultado si tuvieramos el token:
+
+![use token](img/token.jpeg)
