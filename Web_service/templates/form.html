@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+         <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!--script type="text/javascript">
+            $(document).ready(function(){
+                $('select').formSelect();
+            });
+           </script-->
+    
+        <title>Parallel Code</title>
+    </head>
+    <body>
+        <div class="container">
+        <div>
+            <nav>
+                <div class="p-2 mb-2 bg-secondary text-white" style="font-size:30px">Bienvenido {{ name }} selecciona el archivo a ejecutar</div>
+                
+                <div style="text-align:center ;" >
+
+                    {{ data.name }}
+                    {{ data.description }}
+                    
+                </div>
+
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    
+                    <label for="exampleFormControlFile1">Example file input</label>
+                    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                      
+                    <button class="btn">Load image</button>
+                </form>
+
+                <button id="exec">Ejecutar</button>
+
+            </nav>    
+        </div>
+    </div>
+
+ 
+
+    <!--JavaScript at end of body for optimized loading-->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/static/js/ejecutar.js"></script>
+
+
+        
+    </body>
+</html>
