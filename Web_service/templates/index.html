@@ -17,22 +17,29 @@
             });
            </script-->
     
-        <title>Educate</title>
+        <title>Parallel Service</title>
     </head>
     <body>
         <div class="container">
         <div>
             <nav>
-                <div class="p-2 mb-2 bg-secondary text-white" style="font-size:30px">Bienvenido {{ name }} selecciona el archivo a ejecutar</div>
+                <div class="p-2 mb-2 bg-secondary text-white" style="font-size:30px">Bienvenido {{ name }} selecciona el programa a ejecutar</div>
                 
                 <div style="text-align:center ;" >
-
-                   
-                    {% for app in apps %}
-                       
-                        <a href="/form/{{app}}"><h3>{{ app | replace('.exe', '') }}</h3></a>
-                    {% endfor %}
-                    
+                    <table class="table" style="margin-top: 40px;">
+                        <thead>
+                          <tr>
+                            <th scope="col" style="font-size: 30px;">Name File</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for app in apps %}
+                          <tr>
+                            <td><a href="/form/{{app}}"><h3>{{ app | replace('.exe', '') }}</h3></a></td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
                     
                 </div>
 
