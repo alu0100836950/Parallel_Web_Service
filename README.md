@@ -40,12 +40,54 @@ Ahora podemos seleccionar el algoritmo paralelo que queremos utilizar para proce
 
 Imaginemos que seleccionamos la opcion de *mpi*, esto nos llevaría a la siguiente página:
 
-![mpi select](img/mpi.jpeg)
+
+PONER NUEVA IMAGEN
+![mpi select](img/mpi_.jpeg)
+
+En donde como es el caso de *mpi* podemos seleccionar el número de cores a utilizar. Este campo tiene como minimo el valor 1 y como maximo 8.
+
+Una vez seleccionado el numero de cores pulsamos en el boton *ejecutar* y se ejecutaria nuestro programa mostrandonos por pantalla el resultado de la imagen.
+
+![Image lena](img/lena.jpeg)
+
+Esta imagen se queda guardada en nuestro servicio **Service_programs** y además se devuelve y se guarda en nuestro **Web_service** en la ruta *static/temp/output.jpg*.
+
 
 ## Service_programs <a name="id4"></a>
+
+Este servicio se encarga de ejecutar nuestros programas de **openmp** y **mpi**. El método más interesante se describe a continuación:
+
+```python
+
+@app.route('/exec/<name>', methods = ['POST'])
+def execute(name):
+    params = request.get_json()
+    print(params)
+    if params['algoritmo'] == 'mpi':
+        os.popen('mpirun -n ' + str(params['num_cores']) + ' ./mpi.exe ' +  params['input_image'] + ' ' + params['output_image']).read()
+    else:
+        os.popen('./openmp.exe ' +  params['input_image'] + ' ' + params['output_image']).read()
+
+    return send_file(params['output_image'])
+```
+Este metodo obtiene la información que enviamos al pulsar el boton de "ejecutar". Esta recibe la informacion del JSON que tiene la siguiente estructura:
+
+```json
+    "algoritmo": "mpi",
+    "input_image": "name_file", 
+    "output_image": "image_out_mpi.jpg",
+    "num_cores": "num_cores
+```
+
+*Este sería el caso de mpi*
+
+Comprobamos que método se ha escogido con `params['algoritmo']` y dependiendo del algoritmo ejecutamos una u otro utilizando la función `os.popen()`.
+
+Y por último retornamos la imagen que se ha creado en nuestro *Service_programs*.
 
 
 ## Web_API_service <a name="id5"></a>
 
+Este servicio consiste en tratar las peticiones de usuarios que no se conecten a nuestro servicio web sino que quieran usar el servicio de *Service program* directamente. De esta forma protegemos nuestro servicio y solo se lo ofrecemos a los usuarios que queramos.
 
 ## Conclusiones <a name="id6"></a>

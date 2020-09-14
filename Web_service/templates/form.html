@@ -38,13 +38,17 @@
                     <input type="file" name="file" class="form-control-file" id="file">
                       
                     <button class="btn btn-primary" id="btn-cargar" name="btn-cargar" style="margin-top: 20px;">Cargar imagen</button>
+                    <br>
+                    
                 </form>
 
                 {% if data.name == 'OpenMP' %}
-                <button class="btn btn-success" id="exec" style="margin-top: 40px;">Ejecutar</button>
+                
+                <button class="btn btn-success" id="exec-openmp" style="margin-top: 40px;">Ejecutar</button>
                 {% else %}
-                <p style="margin-top: 40px; ">Selecciona el numero de cores</p> <input class="form-control" type="number" value="1" id="number-cores" style="width:60px"> 
-                <button class="btn btn-success" id="exec" style="margin-top: 40px;">Ejecutar</button>
+
+                <p style="margin-top: 40px; ">Selecciona el número de cores</p> <input class="form-control" type="number" value="1" min="1" max="8" id="number-cores" style="width:60px"> 
+                <button class="btn btn-success" id="exec-mpi" style="margin-top: 40px;">Ejecutar</button>
                 {% endif %}
             </nav>    
         </div>

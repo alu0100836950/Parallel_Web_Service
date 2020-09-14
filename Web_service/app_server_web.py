@@ -34,6 +34,7 @@ def login():
 @app.route('/exec/<name>', methods = ['POST'])
 def exec(name):
     params = request.get_json()
+    print(params)
     r = requests.post('http://localhost:5000/exec/' + name, json = params)
     img = Image.open(io.BytesIO(r.content))
     img.save('static/temp/output.jpg')

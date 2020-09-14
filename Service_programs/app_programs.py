@@ -35,14 +35,22 @@ def appDetails(name):
 def upload():
     for file in request.files.getlist('file'):
         file.save(file.filename)
-    return 'ok'
+    return 'Imagen subida'
 
 
 @app.route('/exec/<name>', methods = ['POST'])
 def execute(name):
     params = request.get_json()
     print(params)
-    os.popen('mpirun -n ' + str(params['num_cores']) + ' ./mpi.exe ' +  params['input_image'] + ' ' + params['output_image']).read()
+    if params['algoritmo'] == 'mpi':
+        os.popen('mpirun -n ' + str(params['num_cores']) + ' ./mpi.exe ' +  params['input_image'] + ' ' + params['output_image']).read()
+    else:
+        os.popen('./openmp.exe ' +  params['input_image'] + ' ' + params['output_image']).read()
+        # if result == 0:
+        #     print('Parece que todo bien')
+        # else:
+        #     print('Revisar archivo: salida_del_comando.log para tener más detalle')
+    
     return send_file(params['output_image'])
 
 
