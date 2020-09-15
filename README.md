@@ -137,3 +137,13 @@ def apps():
 Y este sería el resultado si tuvieramos el token:
 
 ![use token](img/token.jpeg)
+
+
+## Calculando el costo del servicio en la nube usando alibabacloud
+
+Si accedemos al enlace *https://www.alibabacloud.com/pricing-calculator#/add/acm-11905897-1ced-45e6-9dbe-f2aa1241c243/vm_intl/vm_intl* poremos calcular el precio que nos saldría el servicio con esta empresa.
+
+
+En la siguiente imagen podemos ver un resumen y el precio segun los parámetros que he escogido. 
+
+![info cloud](img/info_cloud.jpeg)
